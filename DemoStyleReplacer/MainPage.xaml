@@ -60,7 +60,6 @@
         <behaviors:ObservedStyle Name="HyperlinkTextStyleBig"></behaviors:ObservedStyle>
       </behaviors:StyleReplaceBehavior.ObservedStyles>
     </behaviors:StyleReplaceBehavior>
-
   </interactivity:Interaction.Behaviors>
 
   <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -88,20 +87,35 @@
             <ColumnDefinition Width="Auto"/>
           </Grid.ColumnDefinitions>
 
-          <HyperlinkButton Content="Laurent Bugnion" Tag="http://www.twitter.com/lbugnion" Style="{StaticResource CreditHyperlinkButtonStyle}" Click="HyperlinkButtonClick" FontSize="29.333" />
-          <TextBlock  Text="MVVMLight" Grid.Row="0" Grid.Column="1 " Style="{StaticResource CreditItemStyle}" />
+          <HyperlinkButton Content="Laurent Bugnion" Tag="http://www.twitter.com/lbugnion"
+                           Style="{StaticResource CreditHyperlinkButtonStyle}" 
+                           Click="HyperlinkButtonClick" />
+          <TextBlock Text="MVVMLight" Grid.Row="0" Grid.Column="1 " 
+                     Style="{StaticResource CreditItemStyle}" />
 
-          <HyperlinkButton x:Name="hyperlinkButton1" Content="Mike Talbot" Tag="http://whydoidoit.com/" Grid.Row="1" Style="{StaticResource CreditHyperlinkButtonStyle}" Click="HyperlinkButtonClick" FontSize="29.333" />
-          <TextBlock Text="SilverlightSerializer" Grid.Row="1" Grid.Column="1 " Style="{StaticResource CreditItemStyle}" />
+          <HyperlinkButton Content="Mike Talbot" Tag="http://whydoidoit.com/" Grid.Row="1" 
+                           Style="{StaticResource CreditHyperlinkButtonStyle}" 
+                           Click="HyperlinkButtonClick"  />
+          <TextBlock Text="SilverlightSerializer" Grid.Row="1" Grid.Column="1" 
+                     Style="{StaticResource CreditItemStyle}" />
 
-          <HyperlinkButton x:Name="hyperlinkButton2" Content="Matteo Pagani" Tag="http://www.twitter.com/qmatteoq" Grid.Row="2" Style="{StaticResource CreditHyperlinkButtonStyle}" Click="HyperlinkButtonClick" FontFamily="Global User Interface" FontSize="29.333"  />
-          <TextBlock  Text="General advice, explanation Template10" Grid.Row="2" Grid.Column="1" Style="{StaticResource CreditItemStyle}" />
+          <HyperlinkButton Content="Matteo Pagani" Tag="http://www.twitter.com/qmatteoq" Grid.Row="2" 
+                           Style="{StaticResource CreditHyperlinkButtonStyle}" 
+                           Click="HyperlinkButtonClick"  />
+          <TextBlock Text="General advice, explanation Template10" Grid.Row="2" Grid.Column="1" 
+                     Style="{StaticResource CreditItemStyle}" />
 
-          <HyperlinkButton x:Name="hyperlinkButton3" Content="Morten Nielsen" Tag="http://www.twitter.com/dotmorten" Grid.Row="3" Style="{StaticResource CreditHyperlinkButtonStyle}" Click="HyperlinkButtonClick" FontFamily="Global User Interface" FontSize="29.333"  />
-          <TextBlock Text="WindowsStateTriggers" Grid.Row="3" Grid.Column="1 " Style="{StaticResource CreditItemStyle}" />
+          <HyperlinkButton Content="Morten Nielsen" Tag="http://www.twitter.com/dotmorten" Grid.Row="3" 
+                           Style="{StaticResource CreditHyperlinkButtonStyle}" 
+                           Click="HyperlinkButtonClick" />
+          <TextBlock Text="WindowsStateTriggers" Grid.Row="3" Grid.Column="1" 
+                     Style="{StaticResource CreditItemStyle}" />
 
-          <HyperlinkButton x:Name="hyperlinkButton4" Content="Microsoft" Tag="http://www.microsoft.com/" Grid.Row="4" Style="{StaticResource CreditHyperlinkButtonStyle}" Click="HyperlinkButtonClick" FontFamily="Global User Interface" FontSize="29.333"  />
-          <TextBlock Text="Windows, Visual Studio &amp; Template10" Grid.Row="4" Grid.Column="1 " Style="{StaticResource CreditItemStyle}" />
+          <HyperlinkButton  Content="Microsoft" Tag="http://www.microsoft.com/" Grid.Row="4" 
+                            Style="{StaticResource CreditHyperlinkButtonStyle}" 
+                            Click="HyperlinkButtonClick"   />
+          <TextBlock Text="Windows, Visual Studio &amp; Template10" Grid.Row="4" Grid.Column="1 " 
+                     Style="{StaticResource CreditItemStyle}" />
 
         </Grid>
       </ScrollViewer>
