@@ -1,0 +1,137 @@
+﻿<Page
+    x:Class="DemoStyleReplacer.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:behaviors="using:WpWinNl.Behaviors"
+    mc:Ignorable="d">
+  <Page.Resources>
+
+    <Style x:Key="PageTextBaseStyle" TargetType="TextBlock"  BasedOn="{StaticResource BaseTextBlockStyle}">
+      <Setter Property="FontSize" Value="15"/>
+    </Style>
+
+    <Style x:Key="CreditItemStyle" TargetType="TextBlock"  BasedOn="{StaticResource PageTextBaseStyle}" >
+      <Setter Property="FontStyle" Value="Italic"/>
+      <Setter Property="VerticalAlignment" Value="Center"/>
+      <Setter Property="TextWrapping" Value="Wrap"/>
+      <Setter Property="Margin" Value="20,5,0,0"/>
+    </Style>
+
+    <Style x:Key="CreditItemStyleBig" TargetType="TextBlock" BasedOn="{StaticResource CreditItemStyle}">
+      <Setter Property="FontSize" Value="25"/>
+    </Style>
+
+    <Style x:Key="HyperlinkTextStyle" TargetType="TextBlock"  BasedOn="{StaticResource PageTextBaseStyle}" >
+    </Style>
+
+    <Style x:Key="HyperlinkTextStyleBig" TargetType="TextBlock"  BasedOn="{StaticResource PageTextBaseStyle}" >
+      <Setter Property="FontSize" Value="25"/>
+    </Style>
+
+    <Style x:Key="CreditHyperlinkButtonStyle" TargetType="HyperlinkButton">
+      <Setter Property="Foreground" Value="{ThemeResource DefaultTextForegroundThemeBrush}"></Setter>
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="Padding" Value="0"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="HyperlinkButton">
+            <TextBlock x:Name="TextElement" HorizontalAlignment="Left" Text="{TemplateBinding Content}"  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"  Style="{StaticResource HyperlinkTextStyle}"   >
+            </TextBlock>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+
+  </Page.Resources>
+  <interactivity:Interaction.Behaviors>
+    <behaviors:StyleReplaceBehavior x:Name="CreditItemStyler">
+      <behaviors:StyleReplaceBehavior.ObservedStyles>
+        <behaviors:ObservedStyle Name="CreditItemStyle"></behaviors:ObservedStyle>
+        <behaviors:ObservedStyle Name="CreditItemStyleBig"></behaviors:ObservedStyle>
+      </behaviors:StyleReplaceBehavior.ObservedStyles>
+    </behaviors:StyleReplaceBehavior>
+
+    <behaviors:StyleReplaceBehavior x:Name="HyperlinkTextStyler">
+      <behaviors:StyleReplaceBehavior.ObservedStyles>
+        <behaviors:ObservedStyle Name="HyperlinkTextStyle"></behaviors:ObservedStyle>
+        <behaviors:ObservedStyle Name="HyperlinkTextStyleBig"></behaviors:ObservedStyle>
+      </behaviors:StyleReplaceBehavior.ObservedStyles>
+    </behaviors:StyleReplaceBehavior>
+
+  </interactivity:Interaction.Behaviors>
+
+  <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid HorizontalAlignment="Stretch" x:Name="RootGrid" >
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"></RowDefinition>
+        <RowDefinition Height="Auto"></RowDefinition>
+      </Grid.RowDefinitions>
+
+      <TextBlock Text="Credits" FontSize="25" Margin="12,0,0,0"></TextBlock>
+
+      <ScrollViewer Grid.Row="1" Margin="12,0" VerticalAlignment="Top">
+        <Grid x:Name="ContentPanel" Height="Auto" VerticalAlignment="Top"   >
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+          </Grid.ColumnDefinitions>
+
+          <HyperlinkButton Content="Laurent Bugnion" Tag="http://www.twitter.com/lbugnion" Style="{StaticResource CreditHyperlinkButtonStyle}" Click="HyperlinkButtonClick" FontSize="29.333" />
+          <TextBlock  Text="MVVMLight" Grid.Row="0" Grid.Column="1 " Style="{StaticResource CreditItemStyle}" />
+
+          <HyperlinkButton x:Name="hyperlinkButton1" Content="Mike Talbot" Tag="http://whydoidoit.com/" Grid.Row="1" Style="{StaticResource CreditHyperlinkButtonStyle}" Click="HyperlinkButtonClick" FontSize="29.333" />
+          <TextBlock Text="SilverlightSerializer" Grid.Row="1" Grid.Column="1 " Style="{StaticResource CreditItemStyle}" />
+
+          <HyperlinkButton x:Name="hyperlinkButton2" Content="Matteo Pagani" Tag="http://www.twitter.com/qmatteoq" Grid.Row="2" Style="{StaticResource CreditHyperlinkButtonStyle}" Click="HyperlinkButtonClick" FontFamily="Global User Interface" FontSize="29.333"  />
+          <TextBlock  Text="General advice, explanation Template10" Grid.Row="2" Grid.Column="1" Style="{StaticResource CreditItemStyle}" />
+
+          <HyperlinkButton x:Name="hyperlinkButton3" Content="Morten Nielsen" Tag="http://www.twitter.com/dotmorten" Grid.Row="3" Style="{StaticResource CreditHyperlinkButtonStyle}" Click="HyperlinkButtonClick" FontFamily="Global User Interface" FontSize="29.333"  />
+          <TextBlock Text="WindowsStateTriggers" Grid.Row="3" Grid.Column="1 " Style="{StaticResource CreditItemStyle}" />
+
+          <HyperlinkButton x:Name="hyperlinkButton4" Content="Microsoft" Tag="http://www.microsoft.com/" Grid.Row="4" Style="{StaticResource CreditHyperlinkButtonStyle}" Click="HyperlinkButtonClick" FontFamily="Global User Interface" FontSize="29.333"  />
+          <TextBlock Text="Windows, Visual Studio &amp; Template10" Grid.Row="4" Grid.Column="1 " Style="{StaticResource CreditItemStyle}" />
+
+        </Grid>
+      </ScrollViewer>
+    </Grid>
+
+    <VisualStateManager.VisualStateGroups>
+      <VisualStateGroup x:Name="WindowStates">
+
+        <VisualState x:Name="NarrowState">
+          <VisualState.StateTriggers>
+            <AdaptiveTrigger MinWindowWidth="0"></AdaptiveTrigger>
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="CreditItemStyler.CurrentStyle" Value="CreditItemStyle"/>
+            <Setter Target="HyperlinkTextStyler.CurrentStyle" Value="HyperlinkTextStyle"/>
+          </VisualState.Setters>
+        </VisualState>
+
+        <VisualState x:Name="WideState">
+          <VisualState.StateTriggers>
+            <AdaptiveTrigger MinWindowWidth="700"></AdaptiveTrigger>
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="CreditItemStyler.CurrentStyle" Value="CreditItemStyleBig"/>
+            <Setter Target="HyperlinkTextStyler.CurrentStyle" Value="HyperlinkTextStyleBig"/>
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+
+    </VisualStateManager.VisualStateGroups>
+  </Grid>
+
+</Page>
