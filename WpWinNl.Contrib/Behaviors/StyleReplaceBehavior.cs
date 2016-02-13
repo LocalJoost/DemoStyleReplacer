@@ -25,22 +25,19 @@ namespace WpWinNl.Behaviors
       ReplaceStyles(CurrentStyle);
     }
 
-    private void ReplaceStyles(string newStyleName)
+    private void ReplaceStyles(Style newStyle)
     {
-      //Find the current style in the object's resources by name
-      var wantedStyle = AssociatedObject.Resources.FirstOrDefault(p => p.Key.ToString() == newStyleName && p.Value is Style).Value as Style;
-
-      // Find all other styles observed by this behavior
-      var otherStyleNames = ObservedStyles.Where(p => p.Name != newStyleName).Select(p => p.Name);
-      var otherStyles = AssociatedObject.Resources.Where(p => otherStyleNames.Contains(p.Key.ToString())).Select(p => p.Value);
-
-      // Find all the elements having the other styles
-      var elementsToStyle = AssociatedObject.GetVisualDescendents().Where(p => otherStyles.Contains(p.Style));
-
-      // Style those with the new style
-      foreach (var elementToStyle in elementsToStyle)
+      if (!Windows.ApplicationModel.DesignMode.DesignModeEnabled)
       {
-        elementToStyle.Style = wantedStyle;
+        // Find all other styles observed by this behavior
+        var otherStyles = ObservedStyles.Where(p => p.Style != newStyle).Select(p=> p.Style);
+        // Find all the elements having the other styles
+        var elementsToStyle = AssociatedObject.GetVisualDescendents().Where(p => otherStyles.Contains(p.Style));
+        // Style those with the new style
+        foreach (var elementToStyle in elementsToStyle)
+        {
+          elementToStyle.Style = newStyle;
+        }
       }
     }
 
@@ -51,9 +48,9 @@ namespace WpWinNl.Behaviors
     /// </summary>
     public const string CurrentStylePropertyName = "CurrentStyle";
 
-    public string CurrentStyle
+    public Style CurrentStyle
     {
-      get { return (string)GetValue(CurrentStyleProperty); }
+      get { return (Style)GetValue(CurrentStyleProperty); }
       set { SetValue(CurrentStyleProperty, value); }
     }
 
@@ -62,9 +59,9 @@ namespace WpWinNl.Behaviors
     /// </summary>
     public static readonly DependencyProperty CurrentStyleProperty = DependencyProperty.Register(
         CurrentStylePropertyName,
-        typeof(string),
+        typeof(Style),
         typeof(StyleReplaceBehavior),
-        new PropertyMetadata(default(string), CurrentStyleChanged));
+        new PropertyMetadata(default(Style), CurrentStyleChanged));
 
     /// <summary>
     /// CurrentStyle property changed callback.
@@ -74,7 +71,7 @@ namespace WpWinNl.Behaviors
     public static void CurrentStyleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
       var thisobj = d as StyleReplaceBehavior;
-      var newValue = (string)e.NewValue;
+      var newValue = (Style)e.NewValue;
       thisobj?.ReplaceStyles(newValue);
     }
 

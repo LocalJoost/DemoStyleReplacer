@@ -49,15 +49,15 @@
   <interactivity:Interaction.Behaviors>
     <behaviors:StyleReplaceBehavior x:Name="CreditItemStyler">
       <behaviors:StyleReplaceBehavior.ObservedStyles>
-        <behaviors:ObservedStyle Name="CreditItemStyle"></behaviors:ObservedStyle>
-        <behaviors:ObservedStyle Name="CreditItemStyleBig"></behaviors:ObservedStyle>
+        <behaviors:ObservedStyle Style="{StaticResource CreditItemStyle}"></behaviors:ObservedStyle>
+        <behaviors:ObservedStyle Style="{StaticResource CreditItemStyleBig}"></behaviors:ObservedStyle>
       </behaviors:StyleReplaceBehavior.ObservedStyles>
     </behaviors:StyleReplaceBehavior>
 
     <behaviors:StyleReplaceBehavior x:Name="HyperlinkTextStyler">
       <behaviors:StyleReplaceBehavior.ObservedStyles>
-        <behaviors:ObservedStyle Name="HyperlinkTextStyle"></behaviors:ObservedStyle>
-        <behaviors:ObservedStyle Name="HyperlinkTextStyleBig"></behaviors:ObservedStyle>
+        <behaviors:ObservedStyle Style="{StaticResource HyperlinkTextStyle}"></behaviors:ObservedStyle>
+        <behaviors:ObservedStyle Style="{StaticResource HyperlinkTextStyleBig}"></behaviors:ObservedStyle>
       </behaviors:StyleReplaceBehavior.ObservedStyles>
     </behaviors:StyleReplaceBehavior>
   </interactivity:Interaction.Behaviors>
@@ -129,8 +129,8 @@
             <AdaptiveTrigger MinWindowWidth="0"></AdaptiveTrigger>
           </VisualState.StateTriggers>
           <VisualState.Setters>
-            <Setter Target="CreditItemStyler.CurrentStyle" Value="CreditItemStyle"/>
-            <Setter Target="HyperlinkTextStyler.CurrentStyle" Value="HyperlinkTextStyle"/>
+            <Setter Target="CreditItemStyler.CurrentStyle" Value="{StaticResource CreditItemStyle}"/>
+            <Setter Target="HyperlinkTextStyler.CurrentStyle" Value="{StaticResource HyperlinkTextStyle}"/>
           </VisualState.Setters>
         </VisualState>
 
@@ -139,8 +139,8 @@
             <AdaptiveTrigger MinWindowWidth="700"></AdaptiveTrigger>
           </VisualState.StateTriggers>
           <VisualState.Setters>
-            <Setter Target="CreditItemStyler.CurrentStyle" Value="CreditItemStyleBig"/>
-            <Setter Target="HyperlinkTextStyler.CurrentStyle" Value="HyperlinkTextStyleBig"/>
+            <Setter Target="CreditItemStyler.CurrentStyle" Value="{StaticResource CreditItemStyleBig}"/>
+            <Setter Target="HyperlinkTextStyler.CurrentStyle" Value="{StaticResource HyperlinkTextStyleBig}"/>
           </VisualState.Setters>
         </VisualState>
       </VisualStateGroup>
